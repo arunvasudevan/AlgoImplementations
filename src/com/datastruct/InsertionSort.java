@@ -1,4 +1,4 @@
-package com.datastruct.practice;
+package src.com.datastruct;
 
 public class InsertionSort{
 
