@@ -1,21 +1,34 @@
 package com.datastruct;
 
 public class LinkedListNode {
-	int data;
-	LinkedListNode next=null;
+	Node head;
+	Node tail;
 	
-	public LinkedListNode(int d) {
-		data=d;
-	}
-	
-	public void appendToTail(int d){
-		LinkedListNode n=new LinkedListNode(d);
-		LinkedListNode current=this;
-		
-		while(current.next!=null){
-			current=current.next;
+	public void insert(int data){
+		Node n=new Node(data);
+		n.setNext(null);
+		if(head==null){
+			head=n;
+			tail=n;
 		}
-		current.next=n;
+		else{
+			tail.setNext(n);
+			tail=n;
+		}
 	}
+	
+	public void printList(){
+		if(head==null)
+			System.out.println("List is empty");
+		else{
+			Node temp=head;
+			while(temp!=null){
+				System.out.println(temp.getData());
+				temp=temp.getNext();
+			}
+		}
+			
+	}
+	
 
 }
