@@ -1,6 +1,7 @@
 package src.com.datastruct;
 
-
+/* Given 2 Singly Linked Lists, determine if the two lists intersect
+ Cracking the Coding Interview Problem 2.7*/
 class LinkedListIntersection{
 	Node intersectingLinkedList(Node a, Node b){
 
