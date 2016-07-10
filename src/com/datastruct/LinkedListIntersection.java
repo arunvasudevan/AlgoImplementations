@@ -1,5 +1,6 @@
 package src.com.datastruct;
 
+
 class LinkedListIntersection{
 	Node intersectingLinkedList(Node a, Node b){
 
@@ -12,8 +13,8 @@ class LinkedListIntersection{
 		if(r1.tail!=r2.tail)
 			return null;
 
-		Node longer=(r1.length > r2.length) ? r1.tail : r2.tail;
-		Node shorter = (r1.length < r2.length) ? r1.tail : r2.tail;
+		Node longer=(r1.length > r2.length) ? a : b;
+		Node shorter = (r1.length < r2.length) ? a : b;
 
 		longer=moveLongerIndex(longer,Math.abs(r1.length-r2.length));
 
@@ -21,15 +22,15 @@ class LinkedListIntersection{
 			if(longer==shorter)
 				return longer;
 
-			longer=longer.next;
-			shorter=shorter.next;
+			longer=longer.getNext();
+			shorter=shorter.getNext();
 		}
 		return null;
 	}
 
 	Node moveLongerIndex(Node longer,int k){
 		while(k>0){
-			longer=longer.next;
+			longer=longer.getNext();
 			k--;
 		}
 		return longer;
@@ -41,8 +42,9 @@ class LinkedListIntersection{
 		while(localHead!=null){
 			length++;
 			tail=localHead;
-			localHead=localHead.next;
+			localHead=localHead.getNext();
 		}
+		//System.out.println("Length:"+length+ " Tail:"+tail.getData());
 		return new Result(tail,length);
 	}
 
@@ -54,5 +56,45 @@ class LinkedListIntersection{
 	    	length=l;
 	    	tail=n;
 	    }
+	}
+	
+	public static void main(String[] args){
+		LinkedListIntersection ll=new LinkedListIntersection();
+		Node n1=new Node(8);
+		Node n2=new Node(7);
+		Node n3=new Node(6);
+		Node n4=new Node(5);
+		Node n5=new Node(4);
+		Node n6=new Node(3);
+		
+		n1.setNext(n2);
+		n2.setNext(n3);
+		n3.setNext(n4);
+		n4.setNext(n5);
+		n5.setNext(n6);
+		n6.setNext(null);
+		
+		Node b1=new Node(16);
+		Node b2=new Node(15);
+		
+		b1.setNext(b2);
+		b2.setNext(n4);
+		
+		Node copyN1=n1;
+		Node copyB1=b1;
+		
+		System.out.print("Input A: ");
+		while(copyN1!=null){
+			System.out.print(copyN1.getData()+"-->");
+			copyN1=copyN1.getNext();
+		}
+		System.out.println("null");
+		System.out.print("Input B: ");
+		while(copyB1!=null){
+			System.out.print(copyB1.getData()+"-->");
+			copyB1=copyB1.getNext();
+		}
+		System.out.println("null");
+		System.out.println("Intersected List is: "+ll.intersectingLinkedList(n1, b1).getData());
 	}
 }
