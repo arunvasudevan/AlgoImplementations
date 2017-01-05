@@ -1,15 +1,24 @@
-package com.datastruct;
+package src.com.datastruct;
 
 public class Graph {
 	
-	int size;
 	GraphNode[] vertices;
+	int size;
+	int count;
 	
-	Graph(int size){
+	public Graph(int size){
 		this.size=size;
 		vertices=new GraphNode[size];
 	}
-
+		
+	GraphNode[] getNodes(){
+		return vertices;
+	}	
 	
-	
+	public void addNode(GraphNode n){
+		if(count<size)
+			vertices[count++]=n;
+		else
+			System.out.println("Reached the size of the Graph");
+	}	
 }
