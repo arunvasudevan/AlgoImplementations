@@ -1,37 +1,34 @@
-package com.datastruct;
+package src.com.datastruct;
 
 public class TestRouteBetweenNodes {
 
 	public static void main(String[] args) {
-		routeBetweenNodes r=new routeBetweenNodes();
-		GraphNode n1=new GraphNode(1,false);
-		System.out.println("N1 Visited:"+n1.getVisitedFlag());
-		GraphNode n2=new GraphNode(2,false);
-		System.out.println("N2 Visited:"+n2.getVisitedFlag());
-		GraphNode n3=new GraphNode(3,false);
-		System.out.println("N3 Visited:"+n3.getVisitedFlag());
-		
-		GraphNode n4=new GraphNode(4,false);
-		//n2.addChild(null);
-		//n3.addChild(null);
-		//n1.addChild(n2);
-		//n1.addChild(n3);
-		
-		
-		
-		GraphNode n5=new GraphNode(5,false);
-		GraphNode n6=new GraphNode(6,false);
-		
-		n4.addChild(n5);
-		n4.addChild(n6);
-		
-		n1.addChild(n4);
-		//n5.addChild(null);
-		//n6.addChild(null);
-		
-		
-		System.out.println("Is there a route between n1 and n4: "+r.search(n1, n4));
+		final Graph g=new Graph(4);
+		final GraphNode n1=new GraphNode(1, 2);
+		final GraphNode n2=new GraphNode(2, 10);
+		final GraphNode n3=new GraphNode(3, 19);
+		final GraphNode n4=new GraphNode(4, 3);
+		//final GraphNode n5=new GraphNode(5, 15);
 
+		g.addNode(n1);
+		g.addNode(n2);
+		g.addNode(n3);
+		g.addNode(n4);
+		
+		for(final GraphNode n:g.getNodes()){
+			System.out.println("Available Nodes: "+n.name);
+		}
+		
+		n1.addAdjacent(n2);
+		n1.addAdjacent(n3);
+		n1.addAdjacent(n4);
+		n2.addAdjacent(n4);
+		n4.addAdjacent(n3);
+		
+		final routeBetweenNodes r=new routeBetweenNodes();
+		
+		System.out.println(" Node n1 available in n3: "+r.search(n1, n4));
+		
 	}
 
 }

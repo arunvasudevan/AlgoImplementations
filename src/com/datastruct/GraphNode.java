@@ -1,35 +1,29 @@
-package com.datastruct;
+package src.com.datastruct;
 
-import java.util.List;
-
+import java.util.LinkedList;
 
 public class GraphNode {
-	private int data;
-	private boolean visited;
-	List<GraphNode> child;
+	int name;
+	int cost;
+	boolean visitedFlag;
+	LinkedList<GraphNode> adjacencyList;
 	
-	public GraphNode(){
-		
-	}
-	public GraphNode(int data, boolean visited){
-		this.data=data;
-		this.visited=visited;
-	}
-	
-	public GraphNode(int data){
-		this.data=data;
-		this.visited=false;
+	GraphNode(int name,int cost){
+		this.name=name;
+		this.cost=cost;
+		this.visitedFlag=false;
+		this.adjacencyList=new LinkedList<GraphNode>();
 	}
 	
-	public void addChild(GraphNode n){
-		child.add(n);
+	void addAdjacent(GraphNode adjacentNode){
+		adjacencyList.add(adjacentNode);
+	}
+
+	void setVisitedFlag(boolean visitedFlag){
+		this.visitedFlag=visitedFlag;
 	}
 	
-	public void setVisitedFlag(boolean flag){
-		visited=flag;
-	}
-	
-	public boolean getVisitedFlag(){
-		return visited;
+	boolean getVisitedFlag(){
+		return visitedFlag;
 	}
 }
