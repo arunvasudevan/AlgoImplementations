@@ -3,6 +3,7 @@ package src.com.datastruct;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// Problem Statement - Given a Directed Graph find out if there is a route between 2 given nodes
 public class routeBetweenNodes {
 
 	public boolean search(GraphNode n1, GraphNode n2) {
