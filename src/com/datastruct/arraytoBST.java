@@ -1,5 +1,7 @@
 package com.datastruct;
 
+/* Problem Statement:  Given a sorted (increasing order) array with unique elements create a BST with minimal height */
+
 public class arraytoBST {
 	public TreeNode converttoBST(int[] arr){
 		return buildBST(arr,0,arr.length-1);
