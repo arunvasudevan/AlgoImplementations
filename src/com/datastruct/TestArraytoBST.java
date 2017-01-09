@@ -1,25 +1,41 @@
-package com.datastruct;
+package src.com.datastruct;
 
-// Test Class for arraytoBST
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class TestArraytoBST {
 
 	public static void main(String[] args) {
-		final arraytoBST a=new arraytoBST();
-		final int[] arr={1,6,10,19};
 		
-		final TreeNode n=a.converttoBST(arr);
-		System.out.println("Sorted Array Inserted to a Tree....");
+		if(args.length==0){
+			System.out.println("Please input the size of the input array");
+			System.exit(0);
+		}
+		
+		final int inputSize=Integer.parseInt(args[0]);
+		final arraytoBST a=new arraytoBST();
+		
+		final ArrayList<Integer> arr=new ArrayList<>();
+		final Random rand=new Random();
+		for(int i=0;i<inputSize;i++){
+			arr.add(rand.nextInt(100));
+		}
+		
+		Collections.sort(arr);		
+		final TreeNode root=a.converttoBST(arr);
+		
 		final TestArraytoBST t=new TestArraytoBST();
-		System.out.println("Printing the Tree:");
-		t.depthFirstSearch(n);
+		t.depthFirstTraversal(root);
 	}
 
-	public void depthFirstSearch(TreeNode n){
+	public void depthFirstTraversal(TreeNode n){
+		
 		if(n==null)
 			return;
-		depthFirstSearch(n.left);
+		
+		depthFirstTraversal(n.left);
 		System.out.println(n.data);
-		depthFirstSearch(n.right);
+		depthFirstTraversal(n.right);
 	}
 }
