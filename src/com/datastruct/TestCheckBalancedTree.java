@@ -7,8 +7,8 @@ public class TestCheckBalancedTree {
 	public static void main(String[] args) {
 		TreeNode n1=new TreeNode(5);
 		TreeNode n2=new TreeNode(4);
-		TreeNode n3=new TreeNode(3);
-		TreeNode n4=new TreeNode(2);
+		TreeNode root=new TreeNode(3);
+		TreeNode n4=new TreeNode(1);
 		TreeNode n5=new TreeNode(1);
 		TreeNode n6=new TreeNode(0);
 
@@ -17,12 +17,15 @@ public class TestCheckBalancedTree {
 		
 		n2.right=n1;
 		
-		n3.right=n2;
-		n3.left=n5;
+		root.right=n2;
+		root.left=n5;
 		
 		checkBalancedTree c=new checkBalancedTree();
 		
-		System.out.println(c.checkBalanced(n3));
+		System.out.println(c.checkBalanced(root));
+		
+		validateBST v=new validateBST();
+		System.out.println("Is it a BST? "+v.isBST(root));
 	}
 
 }
