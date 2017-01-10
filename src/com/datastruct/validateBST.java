@@ -1,29 +1,33 @@
-package com.datastruct;
-
-// Problem Statement: Check if a binary Tree is a BST
+package src.com.datastruct;
 
 public class validateBST {
-	int max=Integer.MIN_VALUE;
-	
-	boolean isBST(TreeNode root){
-		return checkBST(root) != Integer.MIN_VALUE;
+	Integer max = null;
+
+	boolean isBST(TreeNode root) {
+		if (root == null)
+			return false;
+
+		final validateBST v = new validateBST();
+		return v.checkBST(root);
 	}
-	
-	int checkBST(TreeNode root){
-		if(root==null)
-			return -1;
-		
-		if(checkBST(root.left) == Integer.MIN_VALUE)
-			return Integer.MIN_VALUE;
-		System.out.println("Node Value:"+root.data);
-		if(max>root.data)
-			return Integer.MIN_VALUE;
-		
-		max=root.data;
-		
-		if(checkBST(root.right) == Integer.MIN_VALUE)
-			return Integer.MIN_VALUE;
-		
-		return 0;
+
+	boolean checkBST(TreeNode root) {
+		if (root == null)
+			return true;
+
+		if (!checkBST(root.left))
+			return false;
+
+		System.out.println("Data:" + root.data);
+
+		if (max == null || root.data > max)
+			max = root.data;
+		else
+			return false;
+
+		if (!checkBST(root.right))
+			return false;
+
+		return true;
 	}
 }
