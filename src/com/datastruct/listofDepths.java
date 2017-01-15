@@ -1,4 +1,5 @@
-package src.com.datastruct;
+package com.datastruct;
+
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -6,9 +7,9 @@ import java.util.Queue;
 // Problem Statement: Given a Binary Tree return a linked list for each depth. For Ex: A Tree with a depth of D should return D linkedLists
 
 public class listofDepths {
-	LinkedList<TreeNode>[] depthList;
+	LinkedList<TreeNodeModified>[] depthList;
 
-	LinkedList<TreeNode>[] BFS(TreeNode n) {
+	LinkedList<TreeNodeModified>[] BFS(TreeNodeModified n) {
 		final int d = maxDepth(n);
 		System.out.println("Total Depth:" + d);
 		depthList = new LinkedList[d];
@@ -16,9 +17,9 @@ public class listofDepths {
 			depthList[i] = new LinkedList();
 		}
 		n.depth = 0;
-		final Queue<TreeNode> q = new LinkedList<TreeNode>();
+		final Queue<TreeNodeModified> q = new LinkedList<TreeNodeModified>();
 		q.add(n);
-		TreeNode u;
+		TreeNodeModified u;
 		while (!q.isEmpty()) {
 			u = q.remove();
 			if (u.left != null) {
@@ -29,13 +30,13 @@ public class listofDepths {
 				u.right.depth = u.depth + 1;
 				q.add(u.right);
 			}
-			final LinkedList<TreeNode> t = depthList[u.depth];
+			final LinkedList<TreeNodeModified> t = depthList[u.depth];
 			t.add(u);
 		}
 		return depthList;
 	}
 
-	int maxDepth(TreeNode n) {
+	int maxDepth(TreeNodeModified n) {
 		if (n == null)
 			return 0;
 
