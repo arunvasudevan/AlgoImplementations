@@ -26,6 +26,9 @@ public class TestCheckBalancedTree {
 		
 		validateBST v=new validateBST();
 		System.out.println("Is it a BST? "+v.isBST(root));
+		validateBSTApproach2 v2=new validateBSTApproach2();
+		System.out.println("Is it a BST? "+v2.isBST(root));
+		
 	}
 
 }
