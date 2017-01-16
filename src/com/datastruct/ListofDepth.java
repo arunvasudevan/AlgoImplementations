@@ -16,11 +16,9 @@ public class ListofDepth {
 
 		if (result.size() == level) {
 			temp = new LinkedList<>();
-			temp.add(root);
 			result.add(temp);
 		} else {
 			temp = result.get(level);
-			temp.add(root);
 		}
 
 		temp.add(root);
