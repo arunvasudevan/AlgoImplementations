@@ -22,7 +22,7 @@ public class TestCheckBalancedTree {
 		
 		checkBalancedTree c=new checkBalancedTree();
 		
-		System.out.println(c.checkBalanced(root));
+		System.out.println("Is the Binary Tree Balanced?"+c.checkBalanced(root));
 		
 		validateBST v=new validateBST();
 		System.out.println("Is it a BST? "+v.isBST(root));
