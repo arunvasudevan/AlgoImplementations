@@ -6,7 +6,7 @@ package com.datastruct;
 
 public class checkBalancedTree {
 	
-	boolean checkBalanced(TreeNode root){
+	public boolean checkBalanced(TreeNode root){
 		if(root==null)
 			return false;
 		return treeHeight(root) != Integer.MIN_VALUE;

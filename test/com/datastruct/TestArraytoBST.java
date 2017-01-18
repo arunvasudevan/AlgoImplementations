@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import com.datastruct.TreeNode;
+import com.datastruct.arraytoBST;
+
 public class TestArraytoBST {
 
 	public static void main(String[] args) {

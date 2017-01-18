@@ -5,7 +5,7 @@ package com.datastruct;
 
 public class validateBSTApproach2 {
 
-	boolean isBST(TreeNode root) {
+	public boolean isBST(TreeNode root) {
 		return checkBST(root, null, null);
 	}
 

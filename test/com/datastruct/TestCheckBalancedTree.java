@@ -1,5 +1,9 @@
 package com.datastruct;
 
+import com.datastruct.TreeNode;
+import com.datastruct.checkBalancedTree;
+import com.datastruct.validateBST;
+import com.datastruct.validateBSTApproach2;
 
 // Test checkBalancedTree class
 public class TestCheckBalancedTree {

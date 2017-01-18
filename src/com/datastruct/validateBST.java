@@ -3,7 +3,7 @@ package com.datastruct;
 public class validateBST {
 	Integer max = null;
 
-	boolean isBST(TreeNode root) {
+	public boolean isBST(TreeNode root) {
 		if (root == null)
 			return false;
 
