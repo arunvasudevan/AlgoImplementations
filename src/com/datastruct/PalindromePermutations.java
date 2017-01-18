@@ -1,10 +1,10 @@
-package src.com.datastruct;
+package com.datastruct;
 
 public class PalindromePermutations{
 	
 	char[] unpairedcharacters=new char[]{' ','!','-','/',',','_'};
 	 public static void main(String[] args){
-	     PalindromePermutations p=new PalindromePermutations();
+	     final PalindromePermutations p=new PalindromePermutations();
 	     if(p.palindromeCheck("A Man, A Plan, A Canal - Panama!"))
 	        System.out.println("Its a Palindrome Permuatation");
 	     else
@@ -13,12 +13,12 @@ public class PalindromePermutations{
 	 
 	 boolean palindromeCheck(String s){
 		 s=s.toLowerCase();
-	     char[] charArray=s.toCharArray();
-	     int[] letters=new int[128];
+	     final char[] charArray=s.toCharArray();
+	     final int[] letters=new int[128];
 	     
 	     for(int i=0;i<s.length();i++){
 	    	
-	    	if(String.valueOf(unpairedcharacters).indexOf((int)charArray[i])>=0)
+	    	if(String.valueOf(unpairedcharacters).indexOf(charArray[i])>=0)
 	    		 continue;
 	         letters[charArray[i]]++;
 	         System.out.println(charArray[i]+" "+(int)charArray[i]);

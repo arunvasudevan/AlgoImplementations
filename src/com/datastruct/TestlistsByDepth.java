@@ -1,4 +1,4 @@
-package src.com.datastruct;
+package com.datastruct;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

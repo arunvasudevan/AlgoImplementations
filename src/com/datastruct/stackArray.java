@@ -1,4 +1,4 @@
-package src.com.datastruct;
+package com.datastruct;
 
 import java.util.ArrayList;
 import java.util.EmptyStackException;
@@ -20,7 +20,7 @@ public stackArray(int stackCapacity){
 }
 
 public stackArray(){
-	int default_stack_capacity=10;
+	final int default_stack_capacity=10;
 	new stackArray(default_stack_capacity);
 }
 
@@ -45,9 +45,9 @@ void push(int val){
 public int pop() throws EmptyStackException{
 	if(sa.isEmpty())
 		throw new EmptyStackException();
-	int lastIdx=sa.size() -1;
+	final int lastIdx=sa.size() -1;
 	
-	Stack<Integer> tempStack=sa.get(lastIdx);
+	final Stack<Integer> tempStack=sa.get(lastIdx);
 	
 	if(tempStack.size() ==1)
 		sa.remove(lastIdx);
@@ -57,8 +57,8 @@ public int pop() throws EmptyStackException{
 }
 
 public static void main(String[] args){
-	int stackCapacity=10;
-	stackArray sc=new stackArray(stackCapacity);
+	final int stackCapacity=10;
+	final stackArray sc=new stackArray(stackCapacity);
 	for(int i=0;i<22;i++){
 		sc.push(i);
 	}

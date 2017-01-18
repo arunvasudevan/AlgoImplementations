@@ -1,4 +1,4 @@
-package src.com.datastruct;
+package com.datastruct;
 
 /* Given 2 Singly Linked Lists, determine if the two lists intersect
  Cracking the Coding Interview Problem 2.7*/
@@ -8,8 +8,8 @@ class LinkedListIntersection{
 		if(a==null || b==null)
 			return null;
 
-		Result r1=getTailandLength(a);
-		Result r2=getTailandLength(b);
+		final Result r1=getTailandLength(a);
+		final Result r2=getTailandLength(b);
 
 		if(r1.tail!=r2.tail)
 			return null;
@@ -60,13 +60,13 @@ class LinkedListIntersection{
 	}
 	
 	public static void main(String[] args){
-		LinkedListIntersection ll=new LinkedListIntersection();
-		Node n1=new Node(8);
-		Node n2=new Node(7);
-		Node n3=new Node(6);
-		Node n4=new Node(5);
-		Node n5=new Node(4);
-		Node n6=new Node(3);
+		final LinkedListIntersection ll=new LinkedListIntersection();
+		final Node n1=new Node(8);
+		final Node n2=new Node(7);
+		final Node n3=new Node(6);
+		final Node n4=new Node(5);
+		final Node n5=new Node(4);
+		final Node n6=new Node(3);
 		
 		n1.setNext(n2);
 		n2.setNext(n3);
@@ -75,8 +75,8 @@ class LinkedListIntersection{
 		n5.setNext(n6);
 		n6.setNext(null);
 		
-		Node b1=new Node(16);
-		Node b2=new Node(15);
+		final Node b1=new Node(16);
+		final Node b2=new Node(15);
 		
 		b1.setNext(b2);
 		b2.setNext(n4);

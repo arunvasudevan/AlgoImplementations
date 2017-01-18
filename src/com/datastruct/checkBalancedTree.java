@@ -1,4 +1,4 @@
-package src.com.datastruct;
+package com.datastruct;
 
 // Problem Statement: Check if a tree is balanced.
 // For the purposes of the problem a Balanced tree is one in which the 

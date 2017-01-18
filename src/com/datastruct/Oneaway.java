@@ -1,9 +1,9 @@
-package src.com.datastruct;
+package com.datastruct;
 
 public class Oneaway {
 
 	public static void main(String[] args) {
-		Oneaway o = new Oneaway();
+		final Oneaway o = new Oneaway();
 
 		if (o.findOperation("bake", "pale"))
 			System.out.println("Its One Away");

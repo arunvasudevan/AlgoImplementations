@@ -1,4 +1,4 @@
-package src.com.datastruct;
+package com.datastruct;
 
 public class validateBST {
 	Integer max = null;

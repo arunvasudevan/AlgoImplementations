@@ -1,4 +1,4 @@
-package src.com.datastruct;
+package com.datastruct;
 
 // Validate if a given binary tree is a BST 
 // All left nodes are less than equal to root and all right nodes are greater than root.
