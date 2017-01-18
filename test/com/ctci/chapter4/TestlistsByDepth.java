@@ -1,10 +1,16 @@
-package com.datastruct;
+package com.ctci.chapter4;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.datastruct.TreeNode;
+
+//Problem Statement: Given a Binary Tree return a linked list for each depth. 
+//For Ex: A Tree with a depth of D should return D linkedLists
+
 
 public class TestlistsByDepth {
 	TreeNode n1,n2,n3,n4,n5,n6,n7,n8;

@@ -1,11 +1,10 @@
-package com.datastruct;
+package com.ctci.chapter4;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
 import com.datastruct.TreeNode;
-import com.datastruct.arraytoBST;
 
 public class TestArraytoBST {
 

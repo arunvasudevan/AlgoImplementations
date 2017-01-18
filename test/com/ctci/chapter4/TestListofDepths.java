@@ -1,14 +1,19 @@
-package com.datastruct;
+package com.ctci.chapter4;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.datastruct.TreeNode;
+import com.datastruct.TreeNodeModified;
+
+//Problem Statement: Given a Binary Tree return a linked list for each depth. 
+//For Ex: A Tree with a depth of D should return D linkedLists
 
 // Test class List of Depths
 public class TestListofDepths {
 
 	public static void main(String[] args) {
-		TestListofDepths t=new TestListofDepths();
+		final TestListofDepths t=new TestListofDepths();
 		System.out.println("Test Method1:");
 		t.TestMethod1();
 		System.out.println();
@@ -32,9 +37,9 @@ public class TestListofDepths {
 		n4.right=n5;
 		
 		final ListofDepth l=new ListofDepth();
-		ArrayList<LinkedList<TreeNode>> a=l.listofTreeDepth(n4, 0);
+		final ArrayList<LinkedList<TreeNode>> a=l.listofTreeDepth(n4, 0);
 		int i=1;
-		for(LinkedList<TreeNode> temp:a){
+		for(final LinkedList<TreeNode> temp:a){
 			System.out.println("Depth:"+ i);
 			while(!temp.isEmpty()){
 				System.out.println("  Data:"+temp.remove().data);

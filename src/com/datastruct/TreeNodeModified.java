@@ -2,10 +2,11 @@ package com.datastruct;
 
 public class TreeNodeModified {
 	
-	int data;
-	TreeNodeModified left,right;
+	public int data;
+	public TreeNodeModified left;
+	public TreeNodeModified right;
 	boolean visited;
-	int depth;
+	public int depth;
 	
 	
 	public TreeNodeModified(){
