@@ -16,6 +16,7 @@ public class TestSuccessorNode {
 	public void setUp() throws Exception{
 		nextNode=new successorNode();
 		
+		// Build the BST
 		n1=new BSTNode(4);
 		n2=new BSTNode(2);
 		n3=new BSTNode(1);
