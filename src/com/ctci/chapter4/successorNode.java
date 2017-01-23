@@ -12,24 +12,21 @@ public class successorNode {
 		if (n == null)
 			return n;
 
-		BSTNode nextNode = null;
-		nextNode = findInorderNext(n.right);
+		if(n.right!=null)
+			return findInorderNext(n.right);
 
-		if (nextNode == null) {
-			nextNode = n;
-			while (nextNode.parent != null && nextNode.parent.left != nextNode) {
-				nextNode = nextNode.parent;
-			}
+		BSTNode nextNode = n.parent;
+		while (nextNode != null && nextNode.right == n) {
+			n=nextNode;
 			nextNode = nextNode.parent;
 		}
+		
 		return nextNode;
 	}
 
 	// Recursively find the left most node of a given node
 
 	private BSTNode findInorderNext(BSTNode n) {
-		if (n == null)
-			return n;
 		
 		while (n.left != null) {
 			n = n.left;
