@@ -4,6 +4,7 @@ import com.datastruct.BSTNode;
 
 // Write an algorithms to find the next node (i.e. in-order successor) of a given node in a 
 // BST. You may assume that each node has a link to its parent.
+// CtCI - Chapter 4 Problem 6
 
 public class successorNode {
 
@@ -12,8 +13,7 @@ public class successorNode {
 			return n;
 
 		BSTNode nextNode = null;
-		if (n.right != null)
-			nextNode = findInorderNext(n.right);
+		nextNode = findInorderNext(n.right);
 
 		if (nextNode == null) {
 			nextNode = n;
@@ -28,7 +28,9 @@ public class successorNode {
 	// Recursively find the left most node of a given node
 
 	private BSTNode findInorderNext(BSTNode n) {
-
+		if (n == null)
+			return n;
+		
 		while (n.left != null) {
 			n = n.left;
 		}

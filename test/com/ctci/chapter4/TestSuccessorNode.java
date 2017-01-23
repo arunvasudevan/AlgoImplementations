@@ -7,6 +7,9 @@ import org.junit.Test;
 
 import com.datastruct.BSTNode;
 
+//Write an algorithms to find the next node (i.e. in-order successor) of a given node in a 
+//BST. You may assume that each node has a link to its parent.
+
 public class TestSuccessorNode {
 	
 	BSTNode n1,n2,n3,n4,n5,n6,n7;
@@ -106,5 +109,17 @@ public class TestSuccessorNode {
 			System.out.println("Successor Node of:"+n3.data+" is:"+n);
 		
 		assertEquals(n2, n);
+	}
+	
+	@Test
+	public void testNullInputNode(){
+		BSTNode n=nextNode.findSuccessor(null);
+		
+		if(n!=null)
+			System.out.println("Successor Node of:"+null+" is:"+n.data);
+		else
+			System.out.println("Successor Node of:"+null+" is:"+n);
+		
+		assertEquals(null, n);
 	}
 }
