@@ -23,7 +23,7 @@ public class successorNodewithNoParentLink {
 			findSuccessor(root.left, min);
 		} else if (root.data < min) {
 			nextNode = findSuccessor(root.right, min);
-		} 
+		}
 		return nextNode;
 	}
 
