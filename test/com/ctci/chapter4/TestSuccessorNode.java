@@ -13,18 +13,18 @@ import com.datastruct.TreeNode;
 
 public class TestSuccessorNode {
 	
-	BSTNode n1a,n2a,n3a,n4a,n5a,n6a,n7a;
-	TreeNode n1,n2,n3,n4,n5,n6,n7;
+	BSTNode rootAlt,n2a,n3a,n4a,n5a,n6a,n7a;
+	TreeNode root,n2,n3,n4,n5,n6,n7;
 	successorNode nextNodeA;
-	successorNodewithNoParentLink nextNode;
+	SuccessorNodewithNoParentLink nextNode;
 	
 	@Before
 	public void setUp() throws Exception{
 		nextNodeA=new successorNode();
-		nextNode = new successorNodewithNoParentLink();
+		nextNode = new SuccessorNodewithNoParentLink();
 		
 		// Build the BST
-		n1a=new BSTNode(4);
+		rootAlt=new BSTNode(4);
 		n2a=new BSTNode(2);
 		n3a=new BSTNode(1);
 		n4a=new BSTNode(3);
@@ -32,7 +32,7 @@ public class TestSuccessorNode {
 		n6a=new BSTNode(6);
 		n7a=new BSTNode(7);
 		
-		n1=new TreeNode(4);
+		root=new TreeNode(4);
 		n2=new TreeNode(2);
 		n3=new TreeNode(1);
 		n4=new TreeNode(3);
@@ -41,14 +41,14 @@ public class TestSuccessorNode {
 		n7=new TreeNode(7);
 		
 		
-		n1a.parent=null;
-		n1a.left=n2a;
-		n1a.right=n6a;
+		rootAlt.parent=null;
+		rootAlt.left=n2a;
+		rootAlt.right=n6a;
 		
-		n1.left=n2;
-		n1.right=n6;
+		root.left=n2;
+		root.right=n6;
 		
-		n2a.parent=n1a;
+		n2a.parent=rootAlt;
 		n2a.left=n3a;
 		n2a.right=n4a;
 		
@@ -59,7 +59,7 @@ public class TestSuccessorNode {
 		
 		n4a.parent=n2a;
 		
-		n6a.parent=n1a;
+		n6a.parent=rootAlt;
 		n6a.left=n5a;
 		n6a.right=n7a;
 		
@@ -75,7 +75,7 @@ public class TestSuccessorNode {
 	@Test
 	public void testRightNodeSuccessor() {
 		final BSTNode nA=nextNodeA.findSuccessor(n6a);
-		final TreeNode n=nextNode.successorNode(n1, n6);
+		final TreeNode n=nextNode.successorNode(root, n6);
 		
 		if(n!=null && nA!=null){
 			System.out.println("Successor Node of:"+n6.data+" is:"+n.data);
@@ -93,7 +93,7 @@ public class TestSuccessorNode {
 	@Test
 	public void testEndOfTree(){
 		final BSTNode nA=nextNodeA.findSuccessor(n7a);
-		final TreeNode n=nextNode.successorNode(n1, n7);
+		final TreeNode n=nextNode.successorNode(root, n7);
 		
 		if(n!=null && nA!=null){
 			System.out.println("Successor Node of:"+n7.data+" is:"+n.data);
@@ -111,7 +111,7 @@ public class TestSuccessorNode {
 	@Test
 	public void testParentNodeSuccessor(){
 		final BSTNode nA=nextNodeA.findSuccessor(n4a);
-		final TreeNode n=nextNode.successorNode(n1, n4);
+		final TreeNode n=nextNode.successorNode(root, n4);
 		
 		if(n!=null && nA!=null){
 			System.out.println("Successor Node of:"+n4.data+" is:"+n.data);
@@ -122,22 +122,22 @@ public class TestSuccessorNode {
 			System.out.println("Successor Node (No Parent Link) of:"+n4a.data+" is:"+nA);
 		}
 		
-		assertEquals(n1, n);
-		assertEquals(n1a, nA);
+		assertEquals(root, n);
+		assertEquals(rootAlt, nA);
 	}
 	
 	@Test
 	public void testRootNodeSuccessor(){
-		final BSTNode nA=nextNodeA.findSuccessor(n1a);
-		final TreeNode n=nextNode.successorNode(n1, n1);
+		final BSTNode nA=nextNodeA.findSuccessor(rootAlt);
+		final TreeNode n=nextNode.successorNode(root, root);
 		
 		if(n!=null && nA!=null){
-			System.out.println("Successor Node of:"+n1.data+" is:"+n.data);
-			System.out.println("Successor Node (No Parent Link) of:"+n1a.data+" is:"+nA.data);
+			System.out.println("Successor Node of:"+rootAlt.data+" is:"+n.data);
+			System.out.println("Successor Node (No Parent Link) of:"+rootAlt.data+" is:"+nA.data);
 		}
 		else{
-			System.out.println("Successor Node of:"+n1.data+" is:"+n);
-			System.out.println("Successor Node (No Parent Link) of:"+n1a.data+" is:"+nA);
+			System.out.println("Successor Node of:"+root.data+" is:"+n);
+			System.out.println("Successor Node (No Parent Link) of:"+root.data+" is:"+nA);
 		}
 		
 		assertEquals(n5, n);
@@ -148,7 +148,7 @@ public class TestSuccessorNode {
 	@Test
 	public void testLeftNodeSuccessor(){
 		final BSTNode nA=nextNodeA.findSuccessor(n3a);
-		final TreeNode n=nextNode.successorNode(n1, n3);
+		final TreeNode n=nextNode.successorNode(root, n3);
 		
 		if(n!=null && nA!=null){
 			System.out.println("Successor Node of:"+n3.data+" is:"+n.data);
@@ -166,7 +166,7 @@ public class TestSuccessorNode {
 	@Test
 	public void testNullInputNode(){
 		final BSTNode nA=nextNodeA.findSuccessor(null);
-		final TreeNode n=nextNode.successorNode(n1, null);
+		final TreeNode n=nextNode.successorNode(root, null);
 		
 		if(n!=null && nA!=null){
 			System.out.println("Successor Node of:"+null+" is:"+n.data);

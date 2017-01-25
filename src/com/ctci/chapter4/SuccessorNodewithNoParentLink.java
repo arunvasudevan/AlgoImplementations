@@ -2,19 +2,17 @@ package com.ctci.chapter4;
 
 import com.datastruct.TreeNode;
 
-public class successorNodewithNoParentLink {
+public class SuccessorNodewithNoParentLink {
 	TreeNode nextNode = null;
-
 	public TreeNode successorNode(TreeNode root, TreeNode findSuccessor) {
 		if (root == null || findSuccessor == null) {
 			return null;
 		}
 		if (findSuccessor.right != null) {
-			nextNode = treeMinimum(findSuccessor.right, null);
+			return treeMinimum(findSuccessor.right, null);
 		} else {
-			nextNode = findSuccessor(root, findSuccessor.data);
+			return findSuccessor(root, findSuccessor.data);
 		}
-		return nextNode;
 	}
 
 	private TreeNode findSuccessor(TreeNode root, Integer min) {
