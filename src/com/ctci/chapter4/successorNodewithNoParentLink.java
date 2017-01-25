@@ -12,17 +12,17 @@ public class successorNodewithNoParentLink {
 		if (findSuccessor.right != null) {
 			nextNode = treeMinimum(findSuccessor.right, null);
 		} else {
-			nextNode = findSuccessor(root, findSuccessor.data, null);
+			nextNode = findSuccessor(root, findSuccessor.data);
 		}
 		return nextNode;
 	}
 
-	private TreeNode findSuccessor(TreeNode root, Integer min, Integer max) {
+	private TreeNode findSuccessor(TreeNode root, Integer min) {
 		if (root.data > min) {
 			nextNode = root;
-			findSuccessor(root.left, min, root.data);
+			findSuccessor(root.left, min);
 		} else if (root.data < min) {
-			nextNode = findSuccessor(root.right, min, max);
+			nextNode = findSuccessor(root.right, min);
 		} 
 		return nextNode;
 	}
