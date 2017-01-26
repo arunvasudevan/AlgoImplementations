@@ -10,10 +10,10 @@ import com.datastruct.TreeNodeModified;
 //For Ex: A Tree with a depth of D should return D linkedLists
 
 // Test class List of Depths
-public class TestListofDepths {
+public class ListofDepthsTest {
 
 	public static void main(String[] args) {
-		final TestListofDepths t=new TestListofDepths();
+		final ListofDepthsTest t=new ListofDepthsTest();
 		System.out.println("Test Method1:");
 		t.TestMethod1();
 		System.out.println();
@@ -61,7 +61,7 @@ public class TestListofDepths {
 		n4.left=n2;
 		n4.right=n5;
 		
-		final listofDepths l=new listofDepths();
+		final ListofDepths l=new ListofDepths();
 		final LinkedList<TreeNodeModified>[] arr=l.BFS(n4);
 		int i=1;
 		for(final LinkedList<TreeNodeModified> list:arr){

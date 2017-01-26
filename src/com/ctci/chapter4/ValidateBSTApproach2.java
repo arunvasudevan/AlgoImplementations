@@ -5,7 +5,7 @@ import com.datastruct.TreeNode;
 // Validate if a given binary tree is a BST 
 // All left nodes are less than equal to root and all right nodes are greater than root.
 
-public class validateBSTApproach2 {
+public class ValidateBSTApproach2 {
 
 	public boolean isBST(TreeNode root) {
 		return checkBST(root, null, null);

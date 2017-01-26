@@ -6,7 +6,7 @@ import com.datastruct.BSTNode;
 // BST. You may assume that each node has a link to its parent.
 // CtCI - Chapter 4 Problem 6
 
-public class successorNode {
+public class SuccessorNode {
 
 	BSTNode findSuccessor(BSTNode n) {
 		if (n == null)

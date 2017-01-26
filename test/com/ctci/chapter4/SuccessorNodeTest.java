@@ -11,16 +11,16 @@ import com.datastruct.TreeNode;
 //Write an algorithms to find the next node (i.e. in-order successor) of a given node in a 
 //BST. You may assume that each node has a link to its parent.
 
-public class TestSuccessorNode {
+public class SuccessorNodeTest {
 	
 	BSTNode rootAlt,n2a,n3a,n4a,n5a,n6a,n7a;
 	TreeNode root,n2,n3,n4,n5,n6,n7;
-	successorNode nextNodeA;
+	SuccessorNode nextNodeA;
 	SuccessorNodewithNoParentLink nextNode;
 	
 	@Before
 	public void setUp() throws Exception{
-		nextNodeA=new successorNode();
+		nextNodeA=new SuccessorNode();
 		nextNode = new SuccessorNodewithNoParentLink();
 		
 		// Build the BST

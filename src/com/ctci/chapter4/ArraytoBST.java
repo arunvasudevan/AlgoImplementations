@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.datastruct.TreeNode;
 
-public class arraytoBST {
+public class ArraytoBST {
 	public TreeNode converttoBST(ArrayList<Integer> arr){
 		final int start=0;
 		final int end=arr.size()-1;

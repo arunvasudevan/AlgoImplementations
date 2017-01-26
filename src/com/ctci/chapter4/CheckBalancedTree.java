@@ -6,7 +6,7 @@ import com.datastruct.TreeNode;
 // For the purposes of the problem a Balanced tree is one in which the 
 // the heights of the two subtrees of any node never differ by more than one. 
 
-public class checkBalancedTree {
+public class CheckBalancedTree {
 	
 	public boolean checkBalanced(TreeNode root){
 		if(root==null)

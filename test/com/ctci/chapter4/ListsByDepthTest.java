@@ -12,7 +12,7 @@ import com.datastruct.TreeNode;
 //For Ex: A Tree with a depth of D should return D linkedLists
 
 
-public class TestlistsByDepth {
+public class ListsByDepthTest {
 	TreeNode n1,n2,n3,n4,n5,n6,n7,n8;
 	
 	@Before
@@ -36,7 +36,7 @@ public class TestlistsByDepth {
 
 	@Test
 	public void test() {
-		final listsByDepth l=new listsByDepth();
+		final ListsByDepth l=new ListsByDepth();
 		final ArrayList<LinkedList<TreeNode>> arr=l.BFS(n4);
 		/*int i=1;
 		for(final LinkedList<TreeNode> list:arr){

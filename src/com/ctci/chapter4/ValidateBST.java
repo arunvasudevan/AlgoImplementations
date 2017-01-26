@@ -5,14 +5,14 @@ import com.datastruct.TreeNode;
 //Validate if a given binary tree is a BST 
 // Approach 2 - All left nodes are less than equal to root and all right nodes are greater than or equal to root.
 
-public class validateBST {
+public class ValidateBST {
 	Integer max = null;
 
 	public boolean isBST(TreeNode root) {
 		if (root == null)
 			return false;
 
-		final validateBST v = new validateBST();
+		final ValidateBST v = new ValidateBST();
 		return v.checkBST(root);
 	}
 

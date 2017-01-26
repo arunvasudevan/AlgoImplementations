@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.datastruct.TreeNode;
 
-public class TestArraytoBST {
+public class ArraytoBSTTest {
 
 	public static void main(String[] args) {
 		
@@ -16,7 +16,7 @@ public class TestArraytoBST {
 		}
 		
 		final int inputSize=Integer.parseInt(args[0]);
-		final arraytoBST a=new arraytoBST();
+		final ArraytoBST a=new ArraytoBST();
 		
 		final ArrayList<Integer> arr=new ArrayList<>();
 		final Random rand=new Random();
@@ -27,7 +27,7 @@ public class TestArraytoBST {
 		Collections.sort(arr);		
 		final TreeNode root=a.converttoBST(arr);
 		
-		final TestArraytoBST t=new TestArraytoBST();
+		final ArraytoBSTTest t=new ArraytoBSTTest();
 		t.depthFirstTraversal(root);
 	}
 

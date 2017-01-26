@@ -8,7 +8,7 @@ import com.datastruct.TreeNodeModified;
 // Problem Statement: Given a Binary Tree return a linked list for each depth. 
 // For Ex: A Tree with a depth of D should return D linkedLists
 
-public class listofDepths {
+public class ListofDepths {
 	LinkedList<TreeNodeModified>[] depthList;
 
 	public LinkedList<TreeNodeModified>[] BFS(TreeNodeModified n) {

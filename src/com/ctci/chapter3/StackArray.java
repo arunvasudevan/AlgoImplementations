@@ -9,19 +9,19 @@ import java.util.Stack;
  * Cracking the Coding Interview - Chapter 3 - Q-3_03  
  */
 
-class stackArray{
+class StackArray{
 
 ArrayList<Stack<Integer>> sa=new ArrayList<Stack<Integer>>();
 Stack<Integer> s;
 int stackCapacity;
 
-public stackArray(int stackCapacity){
+public StackArray(int stackCapacity){
 	this.stackCapacity=stackCapacity;
 }
 
-public stackArray(){
+public StackArray(){
 	final int default_stack_capacity=10;
-	new stackArray(default_stack_capacity);
+	new StackArray(default_stack_capacity);
 }
 
 void push(int val){
@@ -58,7 +58,7 @@ public int pop() throws EmptyStackException{
 
 public static void main(String[] args){
 	final int stackCapacity=10;
-	final stackArray sc=new stackArray(stackCapacity);
+	final StackArray sc=new StackArray(stackCapacity);
 	for(int i=0;i<22;i++){
 		sc.push(i);
 	}

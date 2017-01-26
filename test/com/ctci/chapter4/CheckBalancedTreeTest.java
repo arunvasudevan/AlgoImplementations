@@ -7,7 +7,7 @@ import com.datastruct.TreeNode;
 //the heights of the two subtrees of any node never differ by more than one. 
 
 // Test checkBalancedTree class
-public class TestCheckBalancedTree {
+public class CheckBalancedTreeTest {
 
 	public static void main(String[] args) {
 		final TreeNode n1=new TreeNode(5);
@@ -25,13 +25,13 @@ public class TestCheckBalancedTree {
 		root.right=n2;
 		root.left=n5;
 		
-		final checkBalancedTree c=new checkBalancedTree();
+		final CheckBalancedTree c=new CheckBalancedTree();
 		
 		System.out.println("Is the Binary Tree Balanced?"+c.checkBalanced(root));
 		
-		final validateBST v=new validateBST();
+		final ValidateBST v=new ValidateBST();
 		System.out.println("Is it a BST? "+v.isBST(root));
-		final validateBSTApproach2 v2=new validateBSTApproach2();
+		final ValidateBSTApproach2 v2=new ValidateBSTApproach2();
 		System.out.println("Is it a BST? "+v2.isBST(root));
 		
 	}
