@@ -7,7 +7,7 @@ import java.util.List;
 public class GraphNode {
     int data;
     boolean visited;
-	List<adjacency> adjacencyList;
+	List<Adjacency> adjacencyList;
 	
 	public GraphNode(int data, boolean visited){
 		this.data=data;
@@ -17,11 +17,11 @@ public class GraphNode {
 	public GraphNode(int data){
 		this.data=data;
 		this.visited=false;
-		adjacencyList=new LinkedList<adjacency>();
+		adjacencyList=new LinkedList<Adjacency>();
 	}
 	
 	public void addAdjacentEdge(int cost,GraphNode n){
-		adjacency adj=new adjacency(cost,n);
+		Adjacency adj=new Adjacency(cost,n);
 		adjacencyList.add(adj);
 	}
 }

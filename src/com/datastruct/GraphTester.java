@@ -67,7 +67,7 @@ public class GraphTester {
 		q.add(node);
 		while (!q.isEmpty()) {
 			GraphNode temp=q.remove();
-			for (adjacency a : temp.adjacencyList) {
+			for (Adjacency a : temp.adjacencyList) {
 				if (a.adjacent.visited == false){
 					a.adjacent.visited=true;
 					q.add(a.adjacent);

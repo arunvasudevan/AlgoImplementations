@@ -30,9 +30,9 @@ public class Graph {
 		
 		while(!q.isEmpty()){
 			GraphNode temp=q.remove();
-			List<adjacency> l=temp.adjacencyList;
+			List<Adjacency> l=temp.adjacencyList;
 			
-			for(adjacency adj:l){
+			for(Adjacency adj:l){
 				if(adj.adjacent.visited==false){
 					adj.adjacent.visited=true;
 					q.add(adj.adjacent);
