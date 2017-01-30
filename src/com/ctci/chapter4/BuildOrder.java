@@ -14,12 +14,14 @@ import java.util.ArrayList;
  */
 
 public class BuildOrder {
-	ArrayList<String> resultList = new ArrayList<String>();
+	ArrayList<String> resultList;
 
 	public ArrayList<String> findBuildOrder(String[] projects,
 			String[][] dependencies) {
-		for (int i = 0; i < projects.length; i++) {
+		resultList = new ArrayList<String>();
+		for (int i = projects.length - 1; i > 0; i--) {
 			String currentProject = projects[i];
+			System.out.println("current Project:" + currentProject);
 			if (!resultList.contains(currentProject)) {
 				findDependencies(dependencies, currentProject);
 			}
@@ -27,13 +29,19 @@ public class BuildOrder {
 		return resultList;
 	}
 
+	/**
+	 * @param dependencies
+	 * @param currentProject
+	 */
 	private void findDependencies(String[][] dependencies, String currentProject) {
-		for (int i=0; i<dependencies.length; i++) {
-			int j=0;
-			while (currentProject == dependencies[i][j]) {
-				findDependencies(dependencies, currentProject);
-				++j;
+		for (int i = 0; i < dependencies.length; i++) {
+			int j = 0;
+			if (currentProject == dependencies[i][j]) {
+				findDependencies(dependencies, dependencies[i][++j]);
 			}
+		}
+		if (!resultList.contains(currentProject)) {
+			resultList.add(currentProject);
 		}
 	}
 }
