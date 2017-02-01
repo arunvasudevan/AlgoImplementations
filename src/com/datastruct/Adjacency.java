@@ -9,4 +9,7 @@ public class Adjacency {
 		this.adjacent=adjacent;
 	}
 	
+	public Adjacency(GraphNode adjacent){
+		this.adjacent=adjacent;
+	}
 }
