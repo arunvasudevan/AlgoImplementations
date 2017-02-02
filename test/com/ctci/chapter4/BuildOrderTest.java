@@ -9,10 +9,12 @@ import org.junit.Test;
 
 public class BuildOrderTest {
 	BuildOrder build;
+	BuildOrderRevisited buildRevisited;
 
 	@Before
 	public void setUp() throws Exception {
 		build = new BuildOrder();
+		buildRevisited = new BuildOrderRevisited();
 	}
 
 	@Test
@@ -34,6 +36,8 @@ public class BuildOrderTest {
 		expectedResult.add("d");
 		expectedResult.add("c");
 
+		buildRevisited.findBuildOrder(projects, dependencies);
+		
 		assertEquals(expectedResult, resultArray);
 	}
 

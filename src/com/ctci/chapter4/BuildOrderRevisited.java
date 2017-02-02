@@ -1,5 +1,6 @@
 package com.ctci.chapter4;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 import com.datastruct.*;
@@ -15,8 +16,32 @@ public class BuildOrderRevisited {
 	}
 
 	private void printGraph(Graph g) {
+		ArrayList<GraphNode> vertices = g.getVertices();
 		
+		for(GraphNode vertex: vertices) {
+			vertex.setVisited("NEW");
+		}
 		
+		for(GraphNode vertex: vertices) {
+			if(vertex.getVisited().equalsIgnoreCase("NEW")) {
+				graphVisit(vertex);
+			}
+		}
+	}
+
+	/**
+	 * @param vertex
+	 */
+	private void graphVisit(GraphNode vertex) {
+		vertex.setVisited("VISITING");
+		ArrayList<Adjacency> adjacentList = vertex.getAdjacency();
+		for(Adjacency adj: adjacentList) {
+			if(adj.getAdjacent().getVisited().equalsIgnoreCase("NEW")) {	
+				graphVisit(adj.getAdjacent());
+			}
+		}
+		vertex.setVisited("VISITED");
+		System.out.println(vertex.getsData());
 	}
 
 	/**
@@ -25,6 +50,8 @@ public class BuildOrderRevisited {
 	 */
 	private void buildGraph(String[] projects, String[][] dependencies, Graph g) {
 		addProjectsToGraph(projects, g);
+		System.out.println();
+		System.out.println("Added Projects...");
 		addDependenciesToGraph(dependencies, g);
 	}
 
