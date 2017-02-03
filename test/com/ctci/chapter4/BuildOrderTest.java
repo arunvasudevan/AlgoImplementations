@@ -69,10 +69,7 @@ public class BuildOrderTest {
 		final String[][] dependencies = { { "d", "a" }, { "d", "b" }, { "b", "f" }, { "a", "d" }, { "c", "d" } };
 		final Stack<String> resultStack = buildRevisited.findBuildOrder(projects, dependencies);
 		System.out.print("Cyclic Build Order Output is:" + resultStack);
-		for (final String project : resultStack) {
-			System.out.print(project + ",");
-		}
-
+		
 		assertEquals(null, resultStack);
 	}
 
