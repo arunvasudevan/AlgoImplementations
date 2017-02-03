@@ -4,13 +4,26 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Stack;
 
-import com.datastruct.*;
+import com.datastruct.Adjacency;
+import com.datastruct.Graph;
+import com.datastruct.GraphNode;
+
+/*
+ * Given a list of projects and a list of dependencies. 
+ * ALl of a projects dependencies must be built before the project is.
+ * Find a build order that will allow the projects to be built.
+ * Input: 
+ * Projects: a, b, c, d, e, f
+ * Dependencies: (d,a), (b,f), (d,b), (a,f), (c,d)
+ * 
+ * Output:  f, e, a, b, d, c
+ */
 
 public class BuildOrderRevisited {
 	Graph g;
 	public Stack<String> findBuildOrder(String[] projects,
 			String[][] dependencies) {
-		Stack<String> stack = new Stack<String>();
+		final Stack<String> stack = new Stack<String>();
 		g = new Graph();
 		buildGraph(projects, dependencies, g);
 		//System.out.print("Print Graph:");
@@ -19,13 +32,13 @@ public class BuildOrderRevisited {
 	}
 
 	private Stack<String> addBuildOrderToStack(Stack<String> stack) {
-		ArrayList<GraphNode> projects = g.getVertices();
+		final ArrayList<GraphNode> projects = g.getVertices();
 
-		for (GraphNode project : projects) {
+		for (final GraphNode project : projects) {
 			project.setVisited("NEW");
 		}
 		
-		for (GraphNode project : projects) {
+		for (final GraphNode project : projects) {
 			if(project.getVisited().equalsIgnoreCase("NEW")){
 				if(!addDependenciesToStack(project, stack)) {
 					return null;
@@ -40,25 +53,26 @@ public class BuildOrderRevisited {
 			return false;
 		}
 		project.setVisited("VISITING");
-		for(Adjacency adj: project.getAdjacency()) {
+		for(final Adjacency adj: project.getAdjacency()) {
 			if(!addDependenciesToStack(adj.getAdjacent(), stack)) {
 				return false;
 			}
 		}
-		//if(project.getVisited().equalsIgnoreCase(""));
-		stack.add(project.getsData());
+		if(!stack.contains(project.getsData())) {
+			stack.add(project.getsData());
+		}
 		project.setVisited("VISITED");
 		return true;
 	}
 	
 	private void printGraph(Graph g) {
-		ArrayList<GraphNode> vertices = g.getVertices();
+		final ArrayList<GraphNode> vertices = g.getVertices();
 
-		for (GraphNode vertex : vertices) {
+		for (final GraphNode vertex : vertices) {
 			vertex.setVisited("NEW");
 		}
 
-		for (GraphNode vertex : vertices) {
+		for (final GraphNode vertex : vertices) {
 			if (vertex.getVisited().equalsIgnoreCase("NEW")) {
 				graphVisit(vertex);
 			}
@@ -70,8 +84,8 @@ public class BuildOrderRevisited {
 	 */
 	private void graphVisit(GraphNode vertex) {
 		vertex.setVisited("VISITING");
-		LinkedList<Adjacency> adjacentList = vertex.getAdjacency();
-		for (Adjacency adj : adjacentList) {
+		final LinkedList<Adjacency> adjacentList = vertex.getAdjacency();
+		for (final Adjacency adj : adjacentList) {
 			if (adj.getAdjacent().getVisited().equalsIgnoreCase("NEW")) {
 				graphVisit(adj.getAdjacent());
 			}
@@ -91,16 +105,16 @@ public class BuildOrderRevisited {
 	}
 
 	private void addDependenciesToGraph(String[][] dependencies, Graph g) {
-		for (String[] dependent : dependencies) {
-			String startProject = dependent[0];
-			String endProject = dependent[1];
+		for (final String[] dependent : dependencies) {
+			final String startProject = dependent[0];
+			final String endProject = dependent[1];
 			//System.out.println("Add Dependency for Project:"+startProject+" as Project:"+endProject);
 			g.addEdges(startProject, endProject);
 		}
 	}
 
 	private void addProjectsToGraph(String[] projects, Graph g) {
-		for (String project : projects) {
+		for (final String project : projects) {
 			g.addVertices(project);
 		}
 	}
