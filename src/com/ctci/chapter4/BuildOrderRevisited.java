@@ -52,16 +52,17 @@ public class BuildOrderRevisited {
 		if(project.getVisited().equalsIgnoreCase("VISITING")) {
 			return false;
 		}
-		project.setVisited("VISITING");
-		for(final Adjacency adj: project.getAdjacency()) {
-			if(!addDependenciesToStack(adj.getAdjacent(), stack)) {
-				return false;
+		
+		if(project.getVisited().equalsIgnoreCase("NEW")) {
+			project.setVisited("VISITING");
+			for(final Adjacency adj: project.getAdjacency()) {
+				if(!addDependenciesToStack(adj.getAdjacent(), stack)) {
+					return false;
+				}
 			}
-		}
-		if(!stack.contains(project.getsData())) {
 			stack.add(project.getsData());
+			project.setVisited("VISITED");
 		}
-		project.setVisited("VISITED");
 		return true;
 	}
 	
@@ -108,7 +109,6 @@ public class BuildOrderRevisited {
 		for (final String[] dependent : dependencies) {
 			final String startProject = dependent[0];
 			final String endProject = dependent[1];
-			//System.out.println("Add Dependency for Project:"+startProject+" as Project:"+endProject);
 			g.addEdges(startProject, endProject);
 		}
 	}
