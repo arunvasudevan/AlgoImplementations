@@ -1,6 +1,5 @@
 package com.datastruct;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -57,7 +56,7 @@ public class GraphNode {
 		adjacencyList.add(adj);
 	}
 	
-	public ArrayList<Adjacency> getAdjacency() {
-		return (ArrayList<Adjacency>)adjacencyList;
+	public LinkedList<Adjacency> getAdjacency() {
+		return (LinkedList<Adjacency>) adjacencyList;
 	}
 }

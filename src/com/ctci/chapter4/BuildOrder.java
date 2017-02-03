@@ -21,7 +21,7 @@ public class BuildOrder {
 		resultList = new ArrayList<String>();
 		for (int i = projects.length - 1; i > 0; i--) {
 			String currentProject = projects[i];
-			System.out.println("current Project:" + currentProject);
+			//System.out.println("current Project:" + currentProject);
 			if (!resultList.contains(currentProject)) {
 				findDependencies(dependencies, currentProject);
 			}

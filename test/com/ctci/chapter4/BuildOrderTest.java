@@ -3,9 +3,12 @@ package com.ctci.chapter4;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.datastruct.GraphNode;
 
 public class BuildOrderTest {
 	BuildOrder build;
@@ -36,9 +39,25 @@ public class BuildOrderTest {
 		expectedResult.add("d");
 		expectedResult.add("c");
 
-		buildRevisited.findBuildOrder(projects, dependencies);
+		Stack<String> stack = buildRevisited.findBuildOrder(projects, dependencies);
+		
+		System.out.println();
+		System.out.print("Stack Output:");
+		for(String project: stack) {
+			System.out.print(project+",");
+		}
+		
+		Stack<String> expectedStack = new Stack<String>();
+		expectedStack.add("f");
+		expectedStack.add("a");
+		expectedStack.add("b");
+		expectedStack.add("d");
+		expectedStack.add("c");
+		expectedStack.add("e");
 		
 		assertEquals(expectedResult, resultArray);
+		
+		assertEquals(expectedStack, stack);
 	}
 
 	/*@Test
