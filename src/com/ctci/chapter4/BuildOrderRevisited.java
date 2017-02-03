@@ -13,13 +13,12 @@ public class BuildOrderRevisited {
 		Stack<String> stack = new Stack<String>();
 		g = new Graph();
 		buildGraph(projects, dependencies, g);
-		System.out.print("Print Graph:");
-		printGraph(g);
-		addBuildOrderToStack(stack);
-		return stack;
+		//System.out.print("Print Graph:");
+		//printGraph(g);
+		return addBuildOrderToStack(stack);
 	}
 
-	private void addBuildOrderToStack(Stack<String> stack) {
+	private Stack<String> addBuildOrderToStack(Stack<String> stack) {
 		ArrayList<GraphNode> projects = g.getVertices();
 
 		for (GraphNode project : projects) {
@@ -28,20 +27,28 @@ public class BuildOrderRevisited {
 		
 		for (GraphNode project : projects) {
 			if(project.getVisited().equalsIgnoreCase("NEW")){
-				addDependenciesToStack(project, stack);
+				if(!addDependenciesToStack(project, stack)) {
+					return null;
+				}
 			}
 		}
+		return stack;
 	}
 
-	public void addDependenciesToStack(GraphNode project, Stack<String> stack){
+	public boolean addDependenciesToStack(GraphNode project, Stack<String> stack){
+		if(project.getVisited().equalsIgnoreCase("VISITING")) {
+			return false;
+		}
 		project.setVisited("VISITING");
 		for(Adjacency adj: project.getAdjacency()) {
-			if(adj.getAdjacent().getVisited().equalsIgnoreCase("NEW")) {
-				addDependenciesToStack(adj.getAdjacent(), stack);
+			if(!addDependenciesToStack(adj.getAdjacent(), stack)) {
+				return false;
 			}
 		}
+		//if(project.getVisited().equalsIgnoreCase(""));
 		stack.add(project.getsData());
 		project.setVisited("VISITED");
+		return true;
 	}
 	
 	private void printGraph(Graph g) {
@@ -87,6 +94,7 @@ public class BuildOrderRevisited {
 		for (String[] dependent : dependencies) {
 			String startProject = dependent[0];
 			String endProject = dependent[1];
+			//System.out.println("Add Dependency for Project:"+startProject+" as Project:"+endProject);
 			g.addEdges(startProject, endProject);
 		}
 	}

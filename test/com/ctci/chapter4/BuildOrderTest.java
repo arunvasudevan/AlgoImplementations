@@ -13,11 +13,20 @@ import com.datastruct.GraphNode;
 public class BuildOrderTest {
 	BuildOrder build;
 	BuildOrderRevisited buildRevisited;
-
+	Stack<String> expectedStack;
+	
 	@Before
 	public void setUp() throws Exception {
 		build = new BuildOrder();
 		buildRevisited = new BuildOrderRevisited();
+		
+		expectedStack = new Stack<String>();
+		expectedStack.add("f");
+		expectedStack.add("a");
+		expectedStack.add("b");
+		expectedStack.add("d");
+		expectedStack.add("c");
+		expectedStack.add("e");
 	}
 
 	@Test
@@ -27,6 +36,7 @@ public class BuildOrderTest {
 				{ "a", "f" }, { "c", "d" } };
 		ArrayList<String> resultArray = build.findBuildOrder(projects,
 				dependencies);
+		System.out.println();
 		System.out.print("Build Order:");
 		for (String project : resultArray) {
 			System.out.print(project + ",");
@@ -47,39 +57,25 @@ public class BuildOrderTest {
 			System.out.print(project+",");
 		}
 		
-		Stack<String> expectedStack = new Stack<String>();
-		expectedStack.add("f");
-		expectedStack.add("a");
-		expectedStack.add("b");
-		expectedStack.add("d");
-		expectedStack.add("c");
-		expectedStack.add("e");
-		
 		assertEquals(expectedResult, resultArray);
 		
 		assertEquals(expectedStack, stack);
 	}
 
-	/*@Test
+	@Test
 	public void testCyclicBuildOrder() {
 		String[] projects = { "a", "b", "c", "d", "e", "f" };
 		String[][] dependencies = { { "d", "a" }, { "d", "b" }, { "b", "f" },
 				{ "a", "d" }, { "c", "d" } };
-		ArrayList<String> resultArray = build.findBuildOrder(projects,
+		Stack<String> resultStack = buildRevisited.findBuildOrder(projects,
 				dependencies);
-		System.out.print("Build Order 2:");
-		for (String project : resultArray) {
+		System.out.println();
+		System.out.print("Cyclic Build Order Output is:"+resultStack);
+		for (String project : resultStack) {
 			System.out.print(project + ",");
 		}
-		ArrayList<String> expectedResult = new ArrayList<String>();
-		expectedResult.add("f");
-		expectedResult.add("e");
-		expectedResult.add("a");
-		expectedResult.add("b");
-		expectedResult.add("d");
-		expectedResult.add("c");
 
-		assertEquals(expectedResult, resultArray);
-	}*/
+		assertEquals(null, resultStack);
+	}
 
 }
