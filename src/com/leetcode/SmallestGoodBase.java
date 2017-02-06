@@ -25,6 +25,6 @@ The string representing n is always valid and will not have leading zeros.
  * 
  */
 
-public class smallestGoodBase {
+public class SmallestGoodBase {
 
 }
