@@ -17,9 +17,31 @@ public class CommonAncestor {
 		if (nodeADepth == null || nodeBDepth == null) {
 			return null;
 		}
-		return root;
+		
+		TreeNode higherNode = (nodeADepth > nodeBDepth)? nodeA : nodeB;
+		TreeNode lowerNode = (nodeADepth > nodeBDepth) ? nodeB : nodeA;
+		
+		higherNode = goUpBy(higherNode, Math.abs(nodeADepth - nodeBDepth));
+		
+		return findCommonParent(higherNode, lowerNode);
 	}
 
+	TreeNode findCommonParent(TreeNode nodeA, TreeNode nodeB) {		
+		while(nodeA.data != nodeB.data) {
+			nodeA = nodeA.parent;
+			nodeB = nodeB.parent;
+		}
+		return nodeA;
+	}
+	
+	TreeNode goUpBy(TreeNode node, int depthUp) {
+		while(depthUp > 0) {
+			depthUp--;
+			node = node.parent;
+		}
+		return node;
+	}
+	
 	Integer findDepth(TreeNode root, TreeNode findNodeDepth) {
 		final int depth = 0;
 		if (root.data == findNodeDepth.data) {
