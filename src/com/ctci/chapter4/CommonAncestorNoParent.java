@@ -4,6 +4,10 @@ import java.util.Stack;
 
 import com.datastruct.TreeNode;
 
+/* Problem Statement:
+ * Find a Common Ancestor for 2 given nodes in a Binary Tree
+ */
+
 public class CommonAncestorNoParent {
 
 	TreeNode findCommonAncestor(TreeNode root, TreeNode nodeA, TreeNode nodeB) {

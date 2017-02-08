@@ -2,6 +2,10 @@ package com.ctci.chapter4;
 
 import com.datastruct.TreeNode;
 
+/* Problem Statement:
+ * Find a Common Ancestor for 2 given nodes in a Binary Tree
+ */
+
 public class CommonAncestor {
 	public TreeNode findCommonAncestor(TreeNode root, TreeNode nodeA, TreeNode nodeB) {
 		final Integer nodeADepth = findDepth(nodeA);

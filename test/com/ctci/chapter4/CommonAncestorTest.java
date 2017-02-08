@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import com.datastruct.TreeNode;
 
+/* Problem Statement:
+ * Find a Common Ancestor for 2 given nodes in a Binary Tree
+ */
+
 public class CommonAncestorTest {
 
 	TreeNode root, rootL, rootR, rootLL, rootLR, rootRR, rootRL;
