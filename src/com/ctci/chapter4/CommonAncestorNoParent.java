@@ -10,39 +10,37 @@ public class CommonAncestorNoParent {
 
 		final Stack<TreeNode> nodeAStack = new Stack<TreeNode>();
 		final Integer nodeADepth = findDepthDFS(root, nodeA, 0, nodeAStack);
-				
+
 		final Stack<TreeNode> nodeBStack = new Stack<TreeNode>();
 		final Integer nodeBDepth = findDepthDFS(root, nodeB, 0, nodeBStack);
-		
+
 		if (nodeADepth == null || nodeBDepth == null) {
 			return null;
 		}
-		
-		Stack<TreeNode> lowerStack = nodeAStack;
-		Stack<TreeNode> higherStack = nodeBStack;
-		
-		if(nodeADepth != nodeBDepth) {
-			lowerStack = (nodeADepth > nodeBDepth) ? nodeBStack : nodeAStack;
-			higherStack = (nodeADepth > nodeBDepth) ? nodeAStack : nodeBStack;
-			higherStack = goUpBy(higherStack, Math.abs(nodeADepth - nodeBDepth));
+		if (nodeADepth == nodeBDepth) {
+			return findCommonParent(nodeAStack, nodeBStack);
 		}
+
+		final Stack<TreeNode> lowerStack = (nodeADepth > nodeBDepth) ? nodeBStack : nodeAStack;
+		Stack<TreeNode> higherStack = (nodeADepth > nodeBDepth) ? nodeAStack : nodeBStack;
+		higherStack = goUpBy(higherStack, Math.abs(nodeADepth - nodeBDepth));
+
 		return findCommonParent(lowerStack, higherStack);
 	}
-	
-	TreeNode findCommonParent(Stack<TreeNode> stackA, Stack<TreeNode> stackB){
-		
+
+	TreeNode findCommonParent(Stack<TreeNode> stackA, Stack<TreeNode> stackB) {
 		TreeNode stackANode = stackA.pop();
 		TreeNode stackBNode = stackB.pop();
-		
-		while(stackANode.data != stackBNode.data) {
+
+		while (stackANode.data != stackBNode.data) {
 			stackANode = stackA.pop();
 			stackBNode = stackB.pop();
 		}
 		return stackANode;
 	}
-	
-	Stack<TreeNode> goUpBy(Stack<TreeNode> stackNode, int depthUp){
-		while(depthUp > 0) {
+
+	Stack<TreeNode> goUpBy(Stack<TreeNode> stackNode, int depthUp) {
+		while (depthUp > 0) {
 			--depthUp;
 			stackNode.pop();
 		}
@@ -73,7 +71,7 @@ public class CommonAncestorNoParent {
 				return valRight;
 			}
 		}
-		
+
 		nodeStack.pop();
 		--depth;
 		return null;
