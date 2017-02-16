@@ -7,14 +7,14 @@ import com.datastruct.TreeNode;
  */
 
 public class CommonAncestor {
-	public TreeNode findCommonAncestor(TreeNode root, TreeNode nodeA, TreeNode nodeB) {
-		final Integer nodeADepth = findDepth(nodeA);
-		final Integer nodeBDepth = findDepth(nodeB);
+	public TreeNode findCommonAncestor(TreeNode nodeA, TreeNode nodeB) {
+		final int nodeADepth = findDepth(nodeA);
+		final int nodeBDepth = findDepth(nodeB);
 
 		System.out.println("Node A Depth:" + nodeADepth);
 		System.out.println("Node B Depth:" + nodeBDepth);
 
-		if (nodeADepth == null || nodeBDepth == null) {
+		if (nodeADepth == 0 || nodeBDepth == 0) {
 			return null;
 		}
 		
@@ -27,7 +27,7 @@ public class CommonAncestor {
 	}
 
 	TreeNode findCommonParent(TreeNode nodeA, TreeNode nodeB) {		
-		while(nodeA.data != nodeB.data) {
+		while(nodeA != nodeB) {
 			nodeA = nodeA.parent;
 			nodeB = nodeB.parent;
 		}
@@ -42,7 +42,7 @@ public class CommonAncestor {
 		return node;
 	}
 	
-	Integer findDepth(TreeNode findNodeDepth) {
+	int findDepth(TreeNode findNodeDepth) {
 		int depth = 0;
 		while(findNodeDepth != null) {
 			findNodeDepth = findNodeDepth.parent;
