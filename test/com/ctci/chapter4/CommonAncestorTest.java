@@ -54,7 +54,7 @@ public class CommonAncestorTest {
 		System.out.println("----------------------------");
 		System.out.println("Same Levels");
 		System.out.println("----------------------------");
-		final TreeNode result = ca.findCommonAncestor(rootRL, rootRR);
+		final TreeNode result = ca.findCommonAncestor(root, rootRL, rootRR);
 		final TreeNode resultNoParent = caNoParent.findCommonAncestor(root, rootRL, rootRR);
 		System.out.println("Common Parent of "+rootRL.data+" and "+rootRR.data+" is : "+result.data);
 
@@ -68,7 +68,7 @@ public class CommonAncestorTest {
 		System.out.println("----------------------------");
 		System.out.println("Different Levels");
 		System.out.println("----------------------------");
-		final TreeNode result = ca.findCommonAncestor(rootR, rootLR);
+		final TreeNode result = ca.findCommonAncestor(root, rootR, rootLR);
 		final TreeNode resultNoParent = caNoParent.findCommonAncestor(root, rootR, rootLR);
 		System.out.println("Common Parent of "+rootR.data+" and "+rootLR.data+" is : "+result.data);
 		System.out.println("Common Parent (No Parent TreeNode) of "+rootR.data+" and "+rootLR.data+" is : "+resultNoParent.data);
@@ -81,7 +81,7 @@ public class CommonAncestorTest {
 		System.out.println("----------------------------");
 		System.out.println("One Node Parent of Another");
 		System.out.println("----------------------------");
-		final TreeNode result = ca.findCommonAncestor(rootL, rootLR);
+		final TreeNode result = ca.findCommonAncestor(root, rootL, rootLR);
 		final TreeNode resultNoParent = caNoParent.findCommonAncestor(root, rootL, rootLR);
 		System.out.println("Common Parent of "+rootL.data+" and "+rootLR.data+" is : "+result.data);
 
@@ -95,7 +95,7 @@ public class CommonAncestorTest {
 		System.out.println("----------------------------");
 		System.out.println("Return Root Node");
 		System.out.println("----------------------------");
-		final TreeNode result = ca.findCommonAncestor(rootL, rootR);
+		final TreeNode result = ca.findCommonAncestor(root, rootL, rootR);
 		final TreeNode resultNoParent = caNoParent.findCommonAncestor(root, rootL, rootR);
 		System.out.println("Common Parent of "+rootL.data+" and "+rootR.data+" is : "+result.data);
 
@@ -109,7 +109,7 @@ public class CommonAncestorTest {
 		System.out.println("----------------------------");
 		System.out.println("Tes Null Node Input");
 		System.out.println("----------------------------");
-		final TreeNode result = ca.findCommonAncestor(null, null);
+		final TreeNode result = ca.findCommonAncestor(null, null, null);
 
 		final TreeNode resultNoParent = caNoParent.findCommonAncestor(null, null, null);
 		System.out.println("Common Parent of null and null is: "+result);
@@ -127,10 +127,10 @@ public class CommonAncestorTest {
 		System.out.println("Invalid Node");
 		System.out.println("----------------------------");
 		final TreeNode newNode = new TreeNode(9);
-		//final TreeNode result = ca.findCommonAncestor(root, rootL, newNode);
+		final TreeNode result = ca.findCommonAncestor(root, rootL, newNode);
 
 		final TreeNode resultNoParent = caNoParent.findCommonAncestor(root, rootL, newNode);
-		//System.out.println("Common Parent is: "+result);
+		System.out.println("Common Parent is: "+result);
 		
 
 		System.out.println("Common Parent (No Parent TreeNode) of "+rootR.data+" and "+rootLR.data+" is : "+resultNoParent);
