@@ -1,14 +1,16 @@
 package com.ctci.chapter4;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.datastruct.TreeNode;
-
-import java.util.*;
 
 /*
  * Problem Statement - 4.9
@@ -59,23 +61,81 @@ public class BSTSequenceTest {
 
 	@Test
 	public void testNormalFlow() {
-		ArrayList<ArrayList<Integer>> result = bstSeq.findBSTSequence(root);
-		System.out.println("Actual Result:");
-		for(ArrayList<Integer> resultArray: result) {
-			for(Integer a: resultArray){
+		final ArrayList<ArrayList<Integer>> result = bstSeq.findBSTSequence(root);
+		System.out.println("----------------------------------------");
+		System.out.println("Normal Input");
+		System.out.println("----------------------------------------");
+		System.out.println("Result:");
+		for(final ArrayList<Integer> resultArray: result) {
+			for(final Integer a: resultArray){
 				System.out.print(a+",");
 			}
 			System.out.println();
 		}
 		
-		List<List<Integer>> expectedResult = new ArrayList();	
+		final List<List<Integer>> expectedResult = new ArrayList();	
 		expectedResult.add(Arrays.asList(3,1,5,0,2,4,6));
-		expectedResult.add(Arrays.asList(3,5,1,0,2,4,6));
+		expectedResult.add(Arrays.asList(3,1,5,0,2,6,4));
+		expectedResult.add(Arrays.asList(3,1,5,0,4,2,6));
+		expectedResult.add(Arrays.asList(3,1,5,0,4,6,2));
+		expectedResult.add(Arrays.asList(3,1,5,0,6,4,2));
+		expectedResult.add(Arrays.asList(3,1,5,0,6,2,4));
+		expectedResult.add(Arrays.asList(3,1,5,2,0,4,6));
+		expectedResult.add(Arrays.asList(3,1,5,2,0,6,4));
+		expectedResult.add(Arrays.asList(3,1,5,2,4,0,6));
+		expectedResult.add(Arrays.asList(3,1,5,2,4,6,0));
+		expectedResult.add(Arrays.asList(3,1,5,2,6,4,0));
+		expectedResult.add(Arrays.asList(3,1,5,2,6,0,4));
+		expectedResult.add(Arrays.asList(3,1,5,4,2,0,6));
+		expectedResult.add(Arrays.asList(3,1,5,4,2,6,0));
+		expectedResult.add(Arrays.asList(3,1,5,4,0,2,6));
+		expectedResult.add(Arrays.asList(3,1,5,4,0,6,2));
+		expectedResult.add(Arrays.asList(3,1,5,4,6,0,2));
+		expectedResult.add(Arrays.asList(3,1,5,4,6,2,0));
+		expectedResult.add(Arrays.asList(3,1,5,6,2,4,0));
+		expectedResult.add(Arrays.asList(3,1,5,6,2,0,4));
 		expectedResult.add(Arrays.asList(3,1,5,6,4,2,0));
+		expectedResult.add(Arrays.asList(3,1,5,6,4,0,2));
+		expectedResult.add(Arrays.asList(3,1,5,6,0,4,2));
+		expectedResult.add(Arrays.asList(3,1,5,6,0,2,4));
+		expectedResult.add(Arrays.asList(3,5,1,0,2,4,6));
+		expectedResult.add(Arrays.asList(3,5,1,0,2,6,4));
+		expectedResult.add(Arrays.asList(3,5,1,0,4,2,6));
+		expectedResult.add(Arrays.asList(3,5,1,0,4,6,2));
+		expectedResult.add(Arrays.asList(3,5,1,0,6,4,2));
+		expectedResult.add(Arrays.asList(3,5,1,0,6,2,4));
+		expectedResult.add(Arrays.asList(3,5,1,2,0,4,6));
+		expectedResult.add(Arrays.asList(3,5,1,2,0,6,4));
+		expectedResult.add(Arrays.asList(3,5,1,2,4,0,6));
+		expectedResult.add(Arrays.asList(3,5,1,2,4,6,0));
+		expectedResult.add(Arrays.asList(3,5,1,2,6,4,0));
+		expectedResult.add(Arrays.asList(3,5,1,2,6,0,4));
+		expectedResult.add(Arrays.asList(3,5,1,4,2,0,6));
+		expectedResult.add(Arrays.asList(3,5,1,4,2,6,0));
+		expectedResult.add(Arrays.asList(3,5,1,4,0,2,6));
+		expectedResult.add(Arrays.asList(3,5,1,4,0,6,2));
+		expectedResult.add(Arrays.asList(3,5,1,4,6,0,2));
+		expectedResult.add(Arrays.asList(3,5,1,4,6,2,0));
+		expectedResult.add(Arrays.asList(3,5,1,6,2,4,0));
+		expectedResult.add(Arrays.asList(3,5,1,6,2,0,4));
 		expectedResult.add(Arrays.asList(3,5,1,6,4,2,0));
+		expectedResult.add(Arrays.asList(3,5,1,6,4,0,2));
+		expectedResult.add(Arrays.asList(3,5,1,6,0,4,2));
+		expectedResult.add(Arrays.asList(3,5,1,6,0,2,4));
 		
-		assertEquals(result, result);
-		
+		assertEquals(expectedResult, result);	
 	}
 
+	@Test
+	public void testNullInput(){
+		final ArrayList<ArrayList<Integer>> result = bstSeq.findBSTSequence(null);
+		
+		System.out.println("----------------------------------------");
+		System.out.println("Null Input");
+		System.out.println("----------------------------------------");
+		System.out.println("Result:"+result);
+		
+		assertEquals(null, null);
+	}
+	
 }

@@ -1,10 +1,11 @@
 package com.ctci.chapter4;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
-import com.datastruct.*;
-
-import java.util.*;
+import com.datastruct.TreeNode;
 
 /*
  * Problem Statement - 4.9
@@ -14,7 +15,7 @@ import java.util.*;
  */
 
 public class BSTSequence {
-	ArrayList<ArrayList<Integer>> possibleArrays;
+	ArrayList<ArrayList<Integer>> permutationArray;
 
 	public ArrayList<ArrayList<Integer>> findBSTSequence(TreeNode root) {
 		if (root == null) {
@@ -22,63 +23,54 @@ public class BSTSequence {
 		}
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 
-		Queue<TreeNode> q = new LinkedList<TreeNode>();
+		final Queue<TreeNode> q = new LinkedList<TreeNode>();
 		q.add(root);
 
-		ArrayList<Integer> a = new ArrayList<Integer>();
-		a.add(root.data);
+		final ArrayList<Integer> rootArray = new ArrayList<Integer>();
+		rootArray.add(root.data);
 
-		result.add(a);
+		result.add(rootArray);
 
 		while (!q.isEmpty()) {
-			ArrayList<Integer> arrayByDepth = findArraybyDepth(q);
+			// Get all the elements by depth
+			final ArrayList<Integer> arrayByDepth = findArraybyDepth(q);
 
 			if (arrayByDepth.size() == 0) {
 				break;
 			}
 
-			// possibleArrays = generateCombinations(arrayByDepth);
-			possibleArrays = new ArrayList<ArrayList<Integer>>();
+			permutationArray = new ArrayList<ArrayList<Integer>>();
+			// Create all possible permutations for a given array by depth
 			arrayPermutations(arrayByDepth, 0);
 
-			ArrayList<ArrayList<Integer>> copyResult = result;
+			final ArrayList<ArrayList<Integer>> copyResult = result;
 			result = new ArrayList<ArrayList<Integer>>();
-
-			for (ArrayList<Integer> resultArray : copyResult) {
-				for (ArrayList<Integer> possibleArrayList : possibleArrays) {
-					ArrayList<Integer> interimResult = new ArrayList<Integer>();
+			
+			// Create the result by combining array permutations with earlier result
+			for (final ArrayList<Integer> resultArray : copyResult) {
+				for (final ArrayList<Integer> possibleArrayList : permutationArray) {
+					final ArrayList<Integer> interimResult = new ArrayList<Integer>();
 					interimResult.addAll(resultArray);
 					interimResult.addAll(possibleArrayList);
 					result.add(interimResult);
 				}
 			}
 		}
-
 		return result;
 	}
 
-	private ArrayList<ArrayList<Integer>> generateCombinations(
-			ArrayList<Integer> arrayByDepth) {
-		ArrayList<ArrayList<Integer>> possibleArrays = new ArrayList<ArrayList<Integer>>();
-		possibleArrays.add(arrayByDepth);
-
-		ArrayList<Integer> combinationArray = new ArrayList<Integer>();
-		for (int i = arrayByDepth.size() - 1; i >= 0; i--) {
-			combinationArray.add(arrayByDepth.get(i));
-		}
-
-		possibleArrays.add(combinationArray);
-		return possibleArrays;
-	}
-
+	/**
+	 * @param arrayByDepth
+	 * @param index
+	 *            Create all permutations for the Given array
+	 */
 	private void arrayPermutations(ArrayList<Integer> arrayByDepth, int index) {
 		if (index >= arrayByDepth.size() - 1) {
-
-			ArrayList<Integer> copyPossibleArray = new ArrayList<Integer>();
-			for (Integer a : arrayByDepth) {
+			final ArrayList<Integer> copyPossibleArray = new ArrayList<Integer>();
+			for (final Integer a : arrayByDepth) {
 				copyPossibleArray.add(a);
 			}
-			possibleArrays.add(copyPossibleArray);
+			permutationArray.add(copyPossibleArray);
 			return;
 		}
 		for (int i = index; i < arrayByDepth.size(); i++) {
@@ -88,12 +80,17 @@ public class BSTSequence {
 		}
 	}
 
+	/**
+	 * @param q
+	 * @return 
+	 * 		Create an array of all elements for a given depth
+	 */
 	private ArrayList<Integer> findArraybyDepth(Queue<TreeNode> q) {
-		ArrayList<Integer> depthArray = new ArrayList<Integer>();
-		Queue<TreeNode> childQ = new LinkedList<TreeNode>();
+		final ArrayList<Integer> depthArray = new ArrayList<Integer>();
+		final Queue<TreeNode> childQ = new LinkedList<TreeNode>();
 
 		while (!q.isEmpty()) {
-			TreeNode node = q.remove();
+			final TreeNode node = q.remove();
 			if (node.left != null) {
 				depthArray.add(node.left.data);
 				childQ.add(node.left);
