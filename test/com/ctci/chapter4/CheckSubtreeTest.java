@@ -1,6 +1,6 @@
 package com.ctci.chapter4;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
@@ -47,11 +47,48 @@ public class CheckSubtreeTest {
 	}
 
 	@Test
-	public void testNormalFlow() {
-		boolean expectedResult = checkSubTree.compareSubtree(rootT1, rootR);
+	public void testPositiveFlow() {
+		final boolean expectedResult = checkSubTree.subtreeCheck(rootT1, rootR);
+		System.out.println("");
+		System.out.println("Normal Positive Flow");
+		System.out.println("---------------------------------------------");
 		System.out.println("Is T1 a Subtree of T2:"+expectedResult);
 		
 		assertEquals(true, expectedResult);
 	}
 
+	@Test
+	public void testLeafNode() {
+		final boolean expectedResult = checkSubTree.subtreeCheck(rootT1, rootRL);
+		System.out.println();
+		System.out.println("Only Leaf Node as Subtree");
+		System.out.println("---------------------------------------------");
+		System.out.println("Is T1 a Subtree of T2:"+expectedResult);
+		
+		assertEquals(true, expectedResult);
+	}
+	
+	@Test
+	public void testInvalidNode() {
+		final TreeNode newNode = new TreeNode(19);
+		final boolean expectedResult = checkSubTree.subtreeCheck(rootT1, newNode);
+		System.out.println();
+		System.out.println("Invalid new Node");
+		System.out.println("---------------------------------------------");
+		System.out.println("Is T1 a Subtree of T2:"+expectedResult);
+		
+		assertEquals(false, expectedResult);
+	}
+	
+	@Test
+	public void testNullNode() {
+		final boolean expectedResult = checkSubTree.subtreeCheck(rootT1, null);
+		System.out.println();
+		System.out.println("Null Node");
+		System.out.println("---------------------------------------------");
+		System.out.println("Is T1 a Subtree of T2:"+expectedResult);
+		
+		assertEquals(false, expectedResult);
+	}
+	
 }
