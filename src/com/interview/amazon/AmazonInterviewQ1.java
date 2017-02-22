@@ -1,4 +1,4 @@
-package com.datastruct;
+package com.interview.amazon;
 
 /*
 Find the largest fraction in a given array -

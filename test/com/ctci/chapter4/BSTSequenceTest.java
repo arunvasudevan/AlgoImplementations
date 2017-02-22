@@ -28,24 +28,13 @@ public class BSTSequenceTest {
 	public void setUp() throws Exception {
 		bstSeq = new BSTSequence();
 		
-		root = new TreeNode(3);
-		
+		root = new TreeNode(3);		
 		rootL = new TreeNode(1);
-		rootL.parent = root;
-		
 		rootLL = new TreeNode(0);
-		rootLL.parent = rootL;
-		
 		rootLR = new TreeNode(2);
-		rootLR.parent = rootL;
-		
 		rootR = new TreeNode(5);
-		rootR.parent = root;
-		
 		rootRL = new TreeNode(4);
-		rootRL.parent = rootR;
 		rootRR = new TreeNode(6);
-		rootRR.parent = rootR;
 
 		root.left = rootL;
 		root.right = rootR;

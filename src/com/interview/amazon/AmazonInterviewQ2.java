@@ -1,4 +1,4 @@
-package com.datastruct;
+package com.interview.amazon;
 
 /*==========================
 Merge two arrays -
