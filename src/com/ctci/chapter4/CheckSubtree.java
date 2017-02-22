@@ -21,7 +21,7 @@ public class CheckSubtree {
 		while(!q.isEmpty()) {
 			TreeNode nodeT1 = q.remove();
 			
-			if(nodeT1 == rootT2) {
+			if(nodeT1.equals(rootT2)) {
 				if(compareSubtree(nodeT1, rootT2)) {
 					return true;
 				}
@@ -44,8 +44,7 @@ public class CheckSubtree {
 		queueT1.add(nodeT1);
 		queueT2.add(nodeT2);
 		
-		while((nodeT1 == nodeT2) && (nodeT1 != null) && (nodeT2 != null)) {
-			
+		while((nodeT1.equals(nodeT2)) && (nodeT1 != null) && (nodeT2 != null)) {		
 			if(queueT1.isEmpty() && queueT2.isEmpty()) {
 				return true;
 			} else if(queueT1.isEmpty() || queueT2.isEmpty()) {
@@ -70,8 +69,7 @@ public class CheckSubtree {
 			
 			if(nodeT2.right != null) {
 				queueT2.add(nodeT2.right);
-			}
-			
+			}		
 		}
 		return false;
 	}
