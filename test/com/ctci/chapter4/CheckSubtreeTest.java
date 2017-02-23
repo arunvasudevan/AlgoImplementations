@@ -88,7 +88,7 @@ public class CheckSubtreeTest {
 		System.out.println("---------------------------------------------");
 		System.out.println("Is T1 a Subtree of T2:"+expectedResult);
 		
-		assertEquals(false, expectedResult);
+		assertEquals(true, expectedResult);
 	}
 	
 }

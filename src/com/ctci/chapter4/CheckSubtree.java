@@ -14,17 +14,20 @@ import java.util.*;
 
 public class CheckSubtree {
 	public boolean subtreeCheck(TreeNode rootT1, TreeNode rootT2) {
-		Queue<TreeNode> q = new LinkedList<TreeNode>();
-		
+		if(rootT2 == null){
+			return true;
+		}
+		if(rootT1 == null) {
+			return false;
+		}
+		Queue<TreeNode> q = new LinkedList<TreeNode>();	
 		q.add(rootT1);
 		
 		while(!q.isEmpty()) {
 			TreeNode nodeT1 = q.remove();
 			
-			if(nodeT1.equals(rootT2)) {
-				if(compareSubtree(nodeT1, rootT2)) {
+			if(nodeT1.equals(rootT2) && compareSubtree(nodeT1, rootT2)) {
 					return true;
-				}
 			}
 			if(nodeT1.left != null) {
 				q.add(nodeT1.left);
