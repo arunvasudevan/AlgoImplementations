@@ -61,9 +61,7 @@ public class InsertBSTTest {
 		System.out.println("Deleting node:"+rootRL.data);
 		printBSTInorder(root);
 	}
-	
-	
-	
+
 	
 	public void printBSTInorder(BSTNode root) {
 		if(root != null) {
