@@ -9,11 +9,13 @@ public class InsertBSTTest {
 	
 	BSTNode root, rootL, rootR, rootLL, rootLR, rootRR, rootRL;
 	InsertBST insertBST;
+	DeleteBST deleteBST;
 	
 	@Before
 	public void setUp() throws Exception {
 		
 		insertBST = new InsertBST();
+		deleteBST = new DeleteBST();
 		
 		root = new BSTNode(3);		
 		rootL = new BSTNode(1);
@@ -37,6 +39,14 @@ public class InsertBSTTest {
 		rootR.left = rootRL;
 		rootR.right = rootRR;
 	}
+	
+	@Test
+	public void testNullTree() {
+		System.out.println("----------------------------------------");
+		System.out.println("Insert a Node in Null Tree");
+		System.out.println("----------------------------------------");
+		insertBST.insertNodeInBST(null, rootLR);
+	}
 
 	@Test
 	public void testInsert() {
@@ -45,14 +55,23 @@ public class InsertBSTTest {
 		System.out.println("Insert a Node in BST");
 		System.out.println("----------------------------------------");
 		insertBST.insertNodeInBST(root, rootLR);
+		
+		deleteBST.deleteNodeInBST(root, rootRL);
+		System.out.println();
+		System.out.println("Deleting node:"+rootRL.data);
+		printBSTInorder(root);
 	}
 	
 	
-	@Test
-	public void testNullTree() {
-		System.out.println("----------------------------------------");
-		System.out.println("Insert a Node in Null Tree");
-		System.out.println("----------------------------------------");
-		insertBST.insertNodeInBST(null, rootLR);
+	
+	
+	public void printBSTInorder(BSTNode root) {
+		if(root != null) {
+			printBSTInorder(root.left);
+			
+			System.out.print(root.data+",");
+			
+			printBSTInorder(root.right);
+		}
 	}
 }
