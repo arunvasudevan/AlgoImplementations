@@ -1,6 +1,5 @@
 package com.google.codejam2017;
 
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -12,11 +11,13 @@ public class TidyNumbers {
 		Scanner in = new Scanner(new BufferedReader(new InputStreamReader(
 				System.in)));
 		int t = in.nextInt();
+		System.out.println("Total Inputs:"+t);
 		try {
 			PrintWriter writer = new PrintWriter("TidyNumbersOutput.txt", "UTF-8");
 			TidyNumbers tidyNumber = new TidyNumbers();
 			for (int i = 0; i < t; i++) {
 				BigInteger k = in.nextBigInteger();
+				System.out.println("Input:"+k);
 				BigInteger result = tidyNumber.lastTidyNumber(k);
 				writer.println("Case #" + (i + 1) + ": " + result);
 			}
