@@ -16,20 +16,14 @@ public class IsNumberPalindrome {
 
     public static boolean isPalindrome(long number) {
         long reverse = 0;
-        long digits = 10;
         long originalNumber = number;
-        while(number/10 > 1){
-            reverse= (reverse*digits) + (number%10);
+
+        while(number > 0){
+            reverse= (reverse*10) + (number%10);
             number= number/10;
         }
 
-        reverse = (reverse*digits) + (number%10);
-
-        if(reverse == originalNumber) {
-            return true;
-        }
-
-        return false;
+        return reverse == originalNumber;
     }
 
 }
