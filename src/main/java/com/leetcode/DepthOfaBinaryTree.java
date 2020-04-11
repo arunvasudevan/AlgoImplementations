@@ -7,8 +7,7 @@ public class DepthOfaBinaryTree {
         if (node == null) {
             return 0;
         }
-        ++depth;
-        Math.max(treeDepth(node.left), treeDepth(node.right));
+        depth = Math.max(treeDepth(node.left), treeDepth(node.right)) + 1;
         return depth;
     }
 }

@@ -1,5 +1,6 @@
 package com.leetcode;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class DepthOfaBinaryTreeTest {
@@ -22,7 +23,8 @@ public class DepthOfaBinaryTreeTest {
     @Test
     public void depthOftheBinaryTree() {
         DepthOfaBinaryTree depthOfaBinaryTree = new DepthOfaBinaryTree();
-
-        System.out.println("Depth of the Binary Tree: " + depthOfaBinaryTree.treeDepth(buildTree()));
+        int depth = depthOfaBinaryTree.treeDepth(buildTree());
+        System.out.println("Depth of the Binary Tree: "+ depth);
+        Assert.assertEquals(3, depth);
     }
 }
