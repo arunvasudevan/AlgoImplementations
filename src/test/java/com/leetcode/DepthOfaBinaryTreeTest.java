@@ -14,6 +14,6 @@ public class DepthOfaBinaryTreeTest {
         leftNode.left = leftMostNode;
 
         DepthOfaBinaryTree depthOfaBinaryTree = new DepthOfaBinaryTree();
-        System.out.println("Depth of the Binary Tree:"+depthOfaBinaryTree.treeDepth(node));
+        System.out.println("Depth of the Binary Tree: "+depthOfaBinaryTree.treeDepth(node));
     }
 }
