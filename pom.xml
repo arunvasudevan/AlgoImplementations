@@ -50,6 +50,11 @@
             <artifactId>feign-json</artifactId>
             <version>11.6</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-jackson</artifactId>
+            <version>11.6</version>
+        </dependency>
     </dependencies>
 
     <build>
