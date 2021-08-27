@@ -3,6 +3,7 @@ package com.hackerrank;
 import feign.Feign;
 import feign.Param;
 import feign.RequestLine;
+import feign.gson.GsonDecoder;
 import feign.jackson.JacksonDecoder;
 import feign.okhttp.OkHttpClient;
 import java.util.List;
@@ -13,7 +14,7 @@ public class MovieTitleUsingFeignClient {
   public static void main(String[] args) {
     Movies movies = Feign.builder()
         .client(new OkHttpClient())
-        .decoder(new JacksonDecoder())
+        .decoder(new GsonDecoder())
         .target(Movies.class, "https://jsonmock.hackerrank.com/api/movies");
 
     Title titles = movies.title("spiderman", 1);
