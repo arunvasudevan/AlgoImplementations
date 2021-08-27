@@ -4,6 +4,7 @@ import feign.Feign;
 import feign.Param;
 import feign.RequestLine;
 import feign.jackson.JacksonDecoder;
+import feign.okhttp.OkHttpClient;
 import java.util.List;
 
 
@@ -11,6 +12,7 @@ public class MovieTitleUsingFeignClient {
 
   public static void main(String[] args) {
     Movies movies = Feign.builder()
+        .client(new OkHttpClient())
         .decoder(new JacksonDecoder())
         .target(Movies.class, "https://jsonmock.hackerrank.com/api/movies");
 
@@ -43,23 +45,23 @@ public class MovieTitleUsingFeignClient {
 
   static class MovieData {
 
-    private String title;
-    private int year;
+    private String Title;
+    private int Year;
 
     public String getTitle() {
-      return title;
+      return Title;
     }
 
     public void setTitle(String title) {
-      this.title = title;
+      this.Title = title;
     }
 
     public int getYear() {
-      return year;
+      return Year;
     }
 
     public void setYear(int year) {
-      this.year = year;
+      this.Year = year;
     }
   }
 }
